@@ -39,7 +39,7 @@ const ChatPage = () => {
 		socketRef.current.emit("sendMessage", inputValue);
 
 		// Ajouter le message utilisateur localement
-		setMessages((prevMessages) => [...prevMessages, { id: Date.now(), type: "user", text: inputValue }]);
+		// setMessages((prevMessages) => [...prevMessages, { id: Date.now(), type: "user", text: inputValue }]);
 		setInputValue("");
 	};
 
