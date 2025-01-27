@@ -1,32 +1,33 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
-import { Button } from "./components/ui/button";
+import { useRef, useEffect } from 'react'
+import mapboxgl from 'mapbox-gl'
+
+import 'mapbox-gl/dist/mapbox-gl.css';
+
+import './App.css'
 
 function App() {
-	const [count, setCount] = useState(0);
 
-	return (
-		<>
-			<div>
-				<a href="https://vite.dev" target="_blank">
-					<img src={viteLogo} className="logo" alt="Vite logo" />
-				</a>
-				<a href="https://react.dev" target="_blank">
-					<img src={reactLogo} className="logo react" alt="React logo" />
-				</a>
-			</div>
-			<h1 className="text-blue-500 text-3xl font-bold">Vite + React</h1>
-			<div className="card">
-				<button className="bg-green-500 p-2 rounded" onClick={() => setCount((count) => count + 1)}>
-					count is {count}
-				</button>
-				<Button className="">Hello world!</Button>
-			</div>
-			<p className="read-the-docs text-purple-500">Click on the Vite and React logos to learn more</p>
-		</>
-	);
+  const mapRef = useRef()
+  const mapContainerRef = useRef()
+
+  useEffect(() => {
+    mapboxgl.accessToken = (import.meta.env.VITE_MAP_API_KEY)
+    mapRef.current = new mapboxgl.Map({
+      container: mapContainerRef.current,
+      center: [1.433333, 43.6],
+      zoom: 12
+    });
+
+    return () => {
+      mapRef.current.remove()
+    }
+  }, [])
+
+  return (
+    <>
+      <div id='map-container' ref={mapContainerRef}/>
+    </>
+  )
 }
 
-export default App;
+export default App
