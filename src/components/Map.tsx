@@ -185,10 +185,10 @@ function Map() {
   
 
   return (
-    <>
+    <div className='relative h-full w-full'>
         <MapNav />
-        <div id='map-container' ref={mapContainerRef}/>
-    </>
+        <div id='map-container' className='rounded-xl' ref={mapContainerRef}/>
+    </div>
   )
 }
 
