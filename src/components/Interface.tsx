@@ -12,8 +12,6 @@ function Interface() {
                 <div className="flex-grow shadow-custom rounded-xl">
                     <Map />
                 </div>
-
-                {/* Sidebar */}
                 <div className="w-1/4 bg-yellow-500 rounded-xl shadow-custom">
                     <ChatPage />
                 </div>

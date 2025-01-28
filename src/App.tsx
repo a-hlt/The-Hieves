@@ -4,9 +4,6 @@ import Login from './components/auth/Login'
 import Register from './components/auth/Register'
 
 function App() {
-  // You can add auth state here later
-  const isAuthenticated = false;
-
   return (
     <BrowserRouter>
       <Routes>

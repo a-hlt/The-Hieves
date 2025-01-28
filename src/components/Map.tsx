@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect, useState } from 'react'
 import mapboxgl from 'mapbox-gl'
 import '@/App.css'
 import 'mapbox-gl/dist/mapbox-gl.css';
@@ -8,6 +8,7 @@ import { drawPolygon } from '@/utils/drawPolygon';
 //import json data
 import zones from '../../public/csvjson.json'
 import MapNav from './MapNav';
+import { InformationDialog } from './InformationDialog';
 
 export const features = {
   type: "FeatureCollection",
@@ -121,23 +122,20 @@ export const features = {
 };
 
 function Map() {
-
   const mapRef = useRef<mapboxgl.Map | null>(null)
   const mapContainerRef = useRef<HTMLDivElement | null>(null)
+  const [selectedZone, setSelectedZone] = useState<any>(null)
+  const [isDialogOpen, setIsDialogOpen] = useState(false)
 
   useEffect(() => {
-    console.log(zones)
     mapboxgl.accessToken = import.meta.env.VITE_MAP_API_KEY
-    
     if (!mapContainerRef.current) return
-    
     mapRef.current = new mapboxgl.Map({
       container: mapContainerRef.current,
       style: 'mapbox://styles/mapbox/streets-v12',
       center: [1.433333, 43.6],
       zoom: 12
     });
-
 
     mapRef.current.on('load', () => {
         zones.forEach((feature) => {
@@ -169,12 +167,15 @@ function Map() {
                     coordinates,
                     '#000000',
                     0.5,
-                    feature.quartier
+                    feature.quartier,
+                    feature
                 )
 
-              mapRef.current.on('click', `polygon-layer-${feature.quartier}`, (e) => {
-                console.log(e.features[0])
-              });
+                mapRef.current.on('click', `polygon-layer-${feature.quartier}`, (e) => {
+                    console.log(e.features[0]);
+                    setSelectedZone(e.features![0])
+                    setIsDialogOpen(true)
+                });
             }
         });
     });
@@ -188,6 +189,11 @@ function Map() {
     <div className='relative h-full w-full'>
         <MapNav />
         <div id='map-container' className='rounded-xl' ref={mapContainerRef}/>
+        <InformationDialog
+            open={isDialogOpen}
+            onOpenChange={setIsDialogOpen}
+            zoneInfo={selectedZone}
+        />
     </div>
   )
 }

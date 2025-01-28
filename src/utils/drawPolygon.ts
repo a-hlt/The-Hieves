@@ -1,11 +1,25 @@
 import { Map } from "mapbox-gl";
 
+interface ZoneProperties {
+    id: number;
+    temperature: number;
+    humidite: number;
+    force_moyenne_du_vecteur_de_vent: number;
+    force_du_vecteur_de_vent_max: number;
+    pluie_intensite_max: number;
+    date: string;
+    quartier: string;
+    sismicite: number;
+    concentration_gaz: number;
+}
+
 export const drawPolygon = (
     mapRef: Map, 
     coordinates: number[][], 
     color: string, 
     opacity: number,
-    id: string
+    id: string,
+    properties: ZoneProperties
 ) => {
     const sourceId = `polygon-source-${id}`;
     const layerId = `polygon-layer-${id}`;
@@ -19,7 +33,8 @@ export const drawPolygon = (
                 coordinates: coordinates
             },
             properties: {
-                Zone: id
+                Zone: id,
+                ...properties
             }
         }
     });
