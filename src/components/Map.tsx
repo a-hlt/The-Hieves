@@ -7,7 +7,7 @@ import { drawPolygon } from '@/utils/drawPolygon';
 
 //import json data
 import zones from '../../public/csvjson.json'
-import MapNav from './MapMenue';
+import MapNav from './MapNav';
 
 export const features = {
   type: "FeatureCollection",
