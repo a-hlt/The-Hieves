@@ -6,7 +6,6 @@ import MapMenue from './components/MapMenue.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <MapMenue />
     <App />
   </StrictMode>,
 )
