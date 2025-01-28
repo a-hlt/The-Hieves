@@ -44,10 +44,10 @@ const ChatPage = () => {
 	};
 
 	return (
-		<div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-blue-50 to-blue-100">
-			<div className="flex flex-col w-full max-w-2xl h-[90vh] border border-gray-200 rounded-lg shadow-lg bg-white">
+		<div className="flex items-center justify-center bg-gradient-to-r from-blue-50 to-blue-100 h-full rounded-lg min-w-[300px]">
+			<div className="flex flex-col w-full max-w-2xl border border-gray-200 shadow-lg bg-white h-full rounded-lg">
 				{/* Header */}
-				<div className="flex items-center justify-between p-4 border-b border-gray-200 rounded-t-lg bg-white">
+				<div className="flex items-center justify-between p-4 border-b border-gray-200 bg-white rounded-lg">
 					<h1 className="text-xl font-bold text-gray-700">Chatbot</h1>
 					<span className="text-sm text-green-500">En ligne</span>
 				</div>
@@ -57,7 +57,7 @@ const ChatPage = () => {
 					{messages.map((message) => (
 						<div key={message.id} className={`flex ${message.type === "user" ? "justify-end" : "justify-start"}`}>
 							<div
-								className={`max-w-xs md:max-w-md px-4 py-2 rounded-lg text-sm
+								className={`max-w-full px-3 py-2 rounded-lg text-sm break-words
                   ${message.type === "user" ? "bg-blue-500 text-white rounded-tr-none" : "bg-gray-200 text-gray-700 rounded-tl-none"}
                 `}>
 								{message.text}
@@ -68,7 +68,7 @@ const ChatPage = () => {
 				</div>
 
 				{/* Zone de saisie */}
-				<form onSubmit={handleSendMessage} className="p-4 border-t border-gray-200 bg-white rounded-b-lg">
+				<form onSubmit={handleSendMessage} className="p-4 border-t border-gray-200 bg-white rounded-b-lg max-w-full">
 					<div className="flex items-center gap-2">
 						<input
 							type="text"
