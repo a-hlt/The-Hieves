@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import Interface from './components/Interface'
-import Login from './components/auth/Login'
-import Register from './components/auth/Register'
+import Login from './app/login/page'
+import Register from './app/register/page'
 
 function App() {
   // You can add auth state here later
