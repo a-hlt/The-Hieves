@@ -10,7 +10,7 @@ const ChatPage = () => {
 
 	useEffect(() => {
 		// Connexion au serveur Socket.IO
-		socketRef.current = io("http://localhost:3000"); // Remplacez par l'URL de votre serveur
+		socketRef.current = io("http://localhost:4000"); // Remplacez par l'URL de votre serveur
 
 		// Écouter les messages du serveur
 		socketRef.current.on("message", (message) => {
