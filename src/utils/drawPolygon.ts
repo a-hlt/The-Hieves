@@ -10,12 +10,6 @@ export const drawPolygon = (
     const sourceId = `polygon-source-${id}`;
     const layerId = `polygon-layer-${id}`;
 
-    // Check if source already exists
-    if (mapRef.getSource(sourceId)) {
-        return;
-    }
-
-
     mapRef.addSource(sourceId, {
         type: 'geojson',
         data: {
@@ -40,4 +34,4 @@ export const drawPolygon = (
             'fill-opacity': opacity
         }
     });
-}
+} 
