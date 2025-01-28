@@ -4,7 +4,6 @@ import mapboxgl from 'mapbox-gl'
 import 'mapbox-gl/dist/mapbox-gl.css';
 
 import './App.css'
-import FilterNavbar from './components/filterNavbar';
 import { drawPolygon } from '../utils/drawPolygon';
 
 //import json data
@@ -187,7 +186,6 @@ function App() {
 
   return (
     <>
-      <FilterNavbar />
       <div id='map-container' ref={mapContainerRef}/>
     </>
   )
