@@ -32,7 +32,7 @@ Before getting started, ensure you have the following installed on your system:
    Create a `.env` file in the root directory and add your Mapbox API key:
 
    ```env
-   MAPBOX_API_KEY=your-mapbox-api-key
+   VITE_MAP_API_KEY=your-mapbox-api-key
    ```
 
 4. **Start the Development Server**
