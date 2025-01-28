@@ -1,4 +1,5 @@
 import Map from "./Map";
+import ChatPage from "./chatPage";
 import Navbar from "./Navbar";
 
 function Interface() {
@@ -9,12 +10,15 @@ function Interface() {
             </div>
             <div className="flex flex-grow px-5 gap-5">
                 <div className="flex-grow">
+            
+            <div className="flex flex-grow p-5 gap-5">
+                <div className="flex-grow shadow-custom rounded-xl">
                     <Map />
                 </div>
                 
                 {/* Sidebar */}
-                <div className="w-1/4 bg-yellow-500 rounded-xl">
-                    {/* Chat or Additional Info */}
+                <div className="w-1/4 bg-yellow-500 rounded-xl shadow-custom">
+                    <ChatPage />
                 </div>
             </div>
         </div>
